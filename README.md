@@ -1,6 +1,9 @@
 # PJ_IAP1
 PROJET IAP Poursuite par équipes  en patinage de vitesse 
 
+Jules DOUMECHE
+Gwenole MARTIN
+
 ## Presentation
 
 ## Sprint
