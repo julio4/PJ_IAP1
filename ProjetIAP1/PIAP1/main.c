@@ -1,13 +1,10 @@
+#pragma warning(disable:4996)
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
 
 /* FONCTIONS */
-
-int exit() {
-
-}
 
 int definir_parcours() {
 
@@ -42,7 +39,7 @@ int afficher_temps_equipe() {
 }
 
 int main() {
-	while 1 {
-
+	while (1) {
+		//code
 	}
 }
