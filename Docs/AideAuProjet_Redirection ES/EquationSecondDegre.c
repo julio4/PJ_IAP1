@@ -24,5 +24,5 @@ int main() {
 				printf("Deux racines reelles : %f et %f\n", 
 				       (-b-sqrt(delta))/2., (-b+sqrt(delta))/2.);
 	}
-	system("pause"); return 0;
+	return 0;
 }
