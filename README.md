@@ -5,7 +5,7 @@ PROJET IAP Poursuite par équipes  en patinage de vitesse
 
 ## Sprint
 
- [ ] Sprint 1
+- [ ] Sprint 1
 - [ ] Sprint 2
 - [ ] Sprint 3
 - [ ] Sprint 4
