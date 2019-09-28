@@ -1,0 +1,7 @@
+Recette de IAP
+(1) aller sous z: (<ordinateur> <z:>)
+(2) Créer un répertoire <test> sur z: (nouveau dossier)
+(Mettre dans le répertoire <test> l'exécutable du source 
+et le fichier des entrées du programme "in.txt"
+(3) Sous l'invite de commande (aller en z:\test)
+Z:\test>EquationSecondDegre.exe <JDT.txt >out.txt

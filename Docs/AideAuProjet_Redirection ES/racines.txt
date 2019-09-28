@@ -1,0 +1,23 @@
+Resolution de l'equation x^2+bx+c = 0
+Entrez les valeurs de b et c : 0 0
+Une racine reelle : -0.000000
+ 
+Resolution de l'equation x^2+bx+c = 0
+Entrez les valeurs de b et c : -2 1
+Une racine reelle : 1.000000
+
+Resolution de l'equation x^2+bx+c = 0
+Entrez les valeurs de b et c : 0 -1
+Deux racines reelles : -1.000000 et 1.000000
+
+Resolution de l'equation x^2+bx+c = 0
+Entrez les valeurs de b et c : -1 0
+Deux racines reelles : 0.000000 et 1.000000
+
+Resolution de l'equation x^2+bx+c = 0
+Entrez les valeurs de b et c : 1 1
+Pas de racine reelle
+
+Resolution de l'equation x^2+bx+c = 0
+Entrez les valeurs de b et c : 5 1
+Deux racines reelles : -4.791288 et -0.208712
