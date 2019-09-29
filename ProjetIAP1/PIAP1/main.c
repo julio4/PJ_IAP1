@@ -56,11 +56,13 @@ int main() {
 			if (!strcmp(buf, "inscrire_equipe")) {
 				scanf("%s", buf);
 				equipes[0][nb_equipes] = buf;
-				for (int i = 1; i < 7; i+2) {
+				printf("%s\n", equipes[0][nb_equipes]);
+				for (int i = 1; i < 7; i = i + 2) {
 					scanf("%s", buf);
 					equipes[i][nb_equipes] = buf; //Nom
 					printf("%s\n", equipes[i][nb_equipes]);
 					equipes[i+1][nb_equipes] = dossard; //Dossard
+					printf("%s\n", equipes[i+1][nb_equipes]); //ERREUR ICI : violation d'acces
 					printf("inscription dossard %d\n", dossard);
 					++dossard;
 				}
@@ -70,7 +72,7 @@ int main() {
 
 			if (!strcmp(buf, "afficher_equipes")) {
 				for (int i = 0; i < nb_equipes; ++i) {
-					printf("%s ", equipes[0][i]); //Pays
+					printf("%s ", equipes[0][i]); //Pays //ERREUR ICI : envoi afficher_equipes ??
 					for (int j = 1; j < 7; ++j) {
 						printf("%s ", equipes[j][i]);
 					}
