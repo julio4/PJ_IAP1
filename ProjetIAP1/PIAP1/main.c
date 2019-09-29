@@ -40,23 +40,44 @@ int afficher_temps_equipe() {
 */
 
 int main() {
+
 	int on = 1;
+
+	/*
 	int t = 0;
 	int n = 0;
 	int nb_equipes = 0;
 	int dossart = 101;
 	char no_dossart[20];
 	char stop = ' ';
-	char affichage = ' ';
+	char affichage = ' ';*/
+
 	while (on) {
+
+		int stop = 1;
+		char* buf[100];
+
+
+		while ( (scanf("%s", buf)) == 1  && (stop)) {
+			printf("%s\n", buf);
+
+			if (!strcmp(buf, "exit")) {
+				stop = 0;
+			}
+		}
+
+
+		/*
+
 		//definir_parcours 2 
 		scanf("definir_parcours %d", &t);
-		printf("\nYES %d\n", t);
-		//definir_parcours(t);
 
 		//definir_nombre_épreuves 2
 		scanf("definir_nombre_épreuves %d", &n);
 
+
+
+		
 		char equipes[2][7] = ""; //Par equipe : 1 Pays, 3 Noms + 3 dossarts
 		nb_equipes = 2;
 
@@ -82,12 +103,18 @@ int main() {
 				}
 			}
 		}
+		
 
 		//exit
 		scanf("exi%c", &stop);
 		if (stop == 't') {
 			on = 0;
 		}
+
+		*/
+
+		system("pause");
+		on = 0;
 	}
 	return 0;
 }

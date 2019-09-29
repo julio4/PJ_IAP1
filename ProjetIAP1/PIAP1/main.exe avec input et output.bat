@@ -1,0 +1,1 @@
+main.exe < inSprint1.txt > out.txt
