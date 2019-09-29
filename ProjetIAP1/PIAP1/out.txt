@@ -1,0 +1,18 @@
+Press any key to continue . . . 
+nombre_épreuves
+
+tour =2
+nombre_épreuves
+nombre_épreuves
+nombre_épreuves
+nombre_épreuves
+nombre_épreuves
+nombre_épreuves
+nombre_épreuves
+nombre_épreuves
+nombre_épreuves
+nombre_épreuves
+nombre_épreuves
+nombre_épreuves
+nombre_épreuves
+nombre_épreuves

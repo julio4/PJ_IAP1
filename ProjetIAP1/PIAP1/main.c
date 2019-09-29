@@ -4,40 +4,13 @@
 #include <math.h>
 #include <string.h>
 
-/* FONCTIONS */
+/*A FAIRE*/
 /*
-int definir_parcours() {
-	return 1;
-}
 
-int inscrire_equipe() {
-	return 1;
-}
+- ENUM MAX des tableaux
 
-int afficher_equipe() {
-	return 1;
-}
-
-int enregistrer_temps() {
-	return 1;
-}
-
-int detection_fin_poursuite() {
-	return 1;
-}
-
-int detection_fin_competition() {
-	return 1;
-}
-
-int afficher_temps() {
-	return 1;
-}
-
-int afficher_temps_equipe() {
-	return 1;
-}
 */
+
 
 int main() {
 
@@ -57,63 +30,59 @@ int main() {
 		int stop = 1;
 		char* buf[100];
 
+		int t = 0;
+		int n = 0;
+		int dossard = 101;
 
-		while ( (scanf("%s", buf)) == 1  && (stop)) {
-			printf("%s\n", buf);
+		char equipes[8][32];
+		int nb_equipes = 0;
+
+		while ( stop && ( scanf("%s", buf) == 1 ) ) {
+			//printf("%s\n", buf);
+
+			if (!strcmp(buf, "definir_parcours")) {
+				scanf("%d", &t);
+				printf("\ntour =%d\n", t);
+				continue;
+			}
+
+			if (!strcmp(buf, "definir_nombre_0preuves")) { // accent interprété par 0 par le compilateur
+				scanf("%d", &n);
+				printf("\nparcours =%d\n", n);
+				continue;
+			}
+
+			if (!strcmp(buf, "inscrire_equipe")) {
+				scanf("%s", buf);
+				equipes[0][nb_equipes] = buf;
+				for (int i = 1; i < 7; i+2) {
+					scanf("%s", buf);
+					equipes[i][nb_equipes] = buf; //Nom
+					printf("%s\n", equipes[i][nb_equipes]);
+					equipes[i+1][nb_equipes] = dossard; //Dossard
+					printf("inscription dossard %d\n", dossard);
+					++dossard;
+				}
+				++nb_equipes;
+				continue;
+			}
+
+			if (!strcmp(buf, "afficher_equipes")) {
+				for (int i = 0; i < nb_equipes; ++i) {
+					printf("%s ", equipes[0][i]); //Pays
+					for (int j = 1; j < 7; ++j) {
+						printf("%s ", equipes[j][i]);
+					}
+					printf("\n");
+				}
+				continue;
+			}
 
 			if (!strcmp(buf, "exit")) {
 				stop = 0;
 			}
 		}
-
-
-		/*
-
-		//definir_parcours 2 
-		scanf("definir_parcours %d", &t);
-
-		//definir_nombre_épreuves 2
-		scanf("definir_nombre_épreuves %d", &n);
-
-
-
-		
-		char equipes[2][7] = ""; //Par equipe : 1 Pays, 3 Noms + 3 dossarts
-		nb_equipes = 2;
-
-		//inscrire_equipe Canada Blondin Weidemann Morrison
-		for (int i = 0; i < 2; ++i) {
-			scanf("inscrire_equipe %s %s %s %s", &equipes[0][0], &equipes[0][1], &equipes[0][3], &equipes[0][5]);
-			for (int j = 1; j < 5; ++j) {
-				sprintf(no_dossart, "%d", dossart); // convertit int dossart en char no_dossart
-				equipes[i][j + 1] = no_dossart; //mais sa marche pas
-				printf("Inscription dossart %d\n", dossart);
-				++dossart;
-			}
-			++nb_equipes;
-		}
-
-		//afficher_equipes
-		scanf("afficher_equipe%c", &affichage);
-		if (affichage == 's') {
-			for (int i = 0; i < nb_equipes - 1; ++i) {
-				printf("%s", equipes[i][0]); // Pays
-				for (int j = 1; j < 5; ++j) {
-					printf("%s %c", equipes[i][j], equipes[i][j + 1]); //Noms + dossarts
-				}
-			}
-		}
-		
-
-		//exit
-		scanf("exi%c", &stop);
-		if (stop == 't') {
-			on = 0;
-		}
-
-		*/
-
-		system("pause");
+		//system("pause");
 		on = 0;
 	}
 	return 0;
