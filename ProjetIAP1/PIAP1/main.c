@@ -4,6 +4,8 @@
 #include <math.h>
 #include <string.h>
 
+#define TAILLE_STRING_MAX 100
+
 /*A FAIRE*/
 /*
 
@@ -28,17 +30,16 @@ int main() {
 	while (on) {
 
 		int stop = 1;
-		char* buf[100];
+		char* buf[TAILLE_STRING_MAX];
 
 		int t = 0;
 		int n = 0;
 		int dossard = 101;
 
-		char equipes[8][32];
+		char *equipes[8][32];
 		int nb_equipes = 0;
 
 		while ( stop && ( scanf("%s", buf) == 1 ) ) {
-			//printf("%s\n", buf);
 
 			if (!strcmp(buf, "definir_parcours")) {
 				scanf("%d", &t);
