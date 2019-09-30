@@ -3,41 +3,21 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-
 #define TAILLE_STRING_MAX 100
 
-/*A FAIRE*/
-/*
-
-- ENUM MAX des tableaux
-
-*/
-
-
 int main() {
-
-	int on = 1;
-
-	/*
-	int t = 0;
-	int n = 0;
-	int nb_equipes = 0;
-	int dossart = 101;
-	char no_dossart[20];
-	char stop = ' ';
-	char affichage = ' ';*/
-
-	while (on) {
 
 		int stop = 1;
 		char* buf[TAILLE_STRING_MAX];
 
 		int t = 0;
 		int n = 0;
-		int dossard = 101;
 
-		char *equipes[8][32];
-		int nb_equipes = 0;
+		char pay[32][TAILLE_STRING_MAX];
+		char noms_equipes[32][3][TAILLE_STRING_MAX];
+		unsigned char dossard[32][3];
+		unsigned int dernier_dossart_inscrit = 100;
+		int no_equipes = 0;
 
 		while ( stop && ( scanf("%s", buf) == 1 ) ) {
 
@@ -54,29 +34,24 @@ int main() {
 			}
 
 			if (!strcmp(buf, "inscrire_equipe")) {
-				scanf("%s", buf);
-				equipes[0][nb_equipes] = buf;
-				printf("%s\n", equipes[0][nb_equipes]);
-				for (int i = 1; i < 7; i = i + 2) {
-					scanf("%s", buf);
-					equipes[i][nb_equipes] = buf; //Nom
-					printf("%s\n", equipes[i][nb_equipes]);
-					equipes[i+1][nb_equipes] = dossard; //Dossard
-					printf("%s\n", equipes[i+1][nb_equipes]); //ERREUR ICI : violation d'acces
-					printf("inscription dossard %d\n", dossard);
-					++dossard;
+				scanf("%s", pay[no_equipes]); //Inscrit pays
+				for (int i = 0; i < 3; ++i) { // Se lance 3 fois
+					scanf("%s", noms_equipes[no_equipes][i]); //Inscrit Nom
+					dossard[no_equipes][i] = ++dernier_dossart_inscrit; //Inscrit dossard
+					printf("inscription dossard %d\n", dossard[no_equipes][i]); //Print dossard
 				}
-				++nb_equipes;
+				++no_equipes;
 				continue;
 			}
 
 			if (!strcmp(buf, "afficher_equipes")) {
-				for (int i = 0; i < nb_equipes; ++i) {
-					printf("%s ", equipes[0][i]); //Pays //ERREUR ICI : envoi afficher_equipes ??
-					for (int j = 1; j < 7; ++j) {
-						printf("%s ", equipes[j][i]);
+				for (int i = 0; i < no_equipes; ++i) {
+					printf("%s ", pay[i]);
+					for (int j = 0; j < 3; ++j) {
+						printf("%s ", noms_equipes[i][j]);
+						printf("%d ", dossard[i][j]);
 					}
-					printf("\n");
+					//printf("\n"); Inutile pour sprint 1
 				}
 				continue;
 			}
@@ -85,8 +60,6 @@ int main() {
 				stop = 0;
 			}
 		}
-		//system("pause");
-		on = 0;
-	}
+
 	return 0;
 }

@@ -1,1 +1,13 @@
-﻿  PIAP1.vcxproj -> C:\Users\jules\Documents\GitHub\PJ_IAP1\ProjetIAP1\x64\Debug\PIAP1.exe
+﻿  main.c
+C:\Users\famille\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(34,27): warning C4477:  'scanf' : la chaîne de format '%s' nécessite un argument de type 'char *', mais l'argument variadique 1 est de type 'char **'
+C:\Users\famille\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(36,19): warning C4047:  'fonction' : les niveaux d'indirection de 'const char *' et de 'char *[100]' sont différents
+C:\Users\famille\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(36,19): warning C4024:  'strcmp' : types différents pour le paramètre formel et réel 1
+C:\Users\famille\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(42,19): warning C4047:  'fonction' : les niveaux d'indirection de 'const char *' et de 'char *[100]' sont différents
+C:\Users\famille\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(42,19): warning C4024:  'strcmp' : types différents pour le paramètre formel et réel 1
+C:\Users\famille\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(48,19): warning C4047:  'fonction' : les niveaux d'indirection de 'const char *' et de 'char *[100]' sont différents
+C:\Users\famille\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(48,19): warning C4024:  'strcmp' : types différents pour le paramètre formel et réel 1
+C:\Users\famille\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(58,19): warning C4047:  'fonction' : les niveaux d'indirection de 'const char *' et de 'char *[100]' sont différents
+C:\Users\famille\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(58,19): warning C4024:  'strcmp' : types différents pour le paramètre formel et réel 1
+C:\Users\famille\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(70,19): warning C4047:  'fonction' : les niveaux d'indirection de 'const char *' et de 'char *[100]' sont différents
+C:\Users\famille\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(70,19): warning C4024:  'strcmp' : types différents pour le paramètre formel et réel 1
+  PIAP1.vcxproj -> C:\Users\famille\Documents\GitHub\PJ_IAP1\ProjetIAP1\x64\Debug\PIAP1.exe
