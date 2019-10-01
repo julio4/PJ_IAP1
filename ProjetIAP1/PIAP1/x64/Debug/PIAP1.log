@@ -1,13 +1,14 @@
 ﻿  main.c
-C:\Users\User\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(22,28): warning C4477:  'scanf' : la chaîne de format '%s' nécessite un argument de type 'char *', mais l'argument variadique 1 est de type 'char **'
-C:\Users\User\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(24,23): warning C4047:  'fonction' : les niveaux d'indirection de 'const char *' et de 'char *[100]' sont différents
-C:\Users\User\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(24,23): warning C4024:  'strcmp' : types différents pour le paramètre formel et réel 1
-C:\Users\User\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(29,23): warning C4047:  'fonction' : les niveaux d'indirection de 'const char *' et de 'char *[100]' sont différents
-C:\Users\User\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(29,23): warning C4024:  'strcmp' : types différents pour le paramètre formel et réel 1
-C:\Users\User\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(34,23): warning C4047:  'fonction' : les niveaux d'indirection de 'const char *' et de 'char *[100]' sont différents
-C:\Users\User\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(34,23): warning C4024:  'strcmp' : types différents pour le paramètre formel et réel 1
-C:\Users\User\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(45,23): warning C4047:  'fonction' : les niveaux d'indirection de 'const char *' et de 'char *[100]' sont différents
-C:\Users\User\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(45,23): warning C4024:  'strcmp' : types différents pour le paramètre formel et réel 1
-C:\Users\User\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(57,23): warning C4047:  'fonction' : les niveaux d'indirection de 'const char *' et de 'char *[100]' sont différents
-C:\Users\User\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(57,23): warning C4024:  'strcmp' : types différents pour le paramètre formel et réel 1
-  PIAP1.vcxproj -> C:\Users\User\Documents\GitHub\PJ_IAP1\ProjetIAP1\x64\Debug\PIAP1.exe
+C:\Users\jules\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(23,28): warning C4477:  'scanf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'char **'
+C:\Users\jules\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(25,11): warning C4477:  'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'char **'
+C:\Users\jules\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(27,23): warning C4047:  'function': 'const char *' differs in levels of indirection from 'char *[100]'
+C:\Users\jules\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(27,23): warning C4024:  'strcmp': different types for formal and actual parameter 1
+C:\Users\jules\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(36,23): warning C4047:  'function': 'const char *' differs in levels of indirection from 'char *[100]'
+C:\Users\jules\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(36,23): warning C4024:  'strcmp': different types for formal and actual parameter 1
+C:\Users\jules\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(44,23): warning C4047:  'function': 'const char *' differs in levels of indirection from 'char *[100]'
+C:\Users\jules\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(44,23): warning C4024:  'strcmp': different types for formal and actual parameter 1
+C:\Users\jules\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(55,23): warning C4047:  'function': 'const char *' differs in levels of indirection from 'char *[100]'
+C:\Users\jules\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(55,23): warning C4024:  'strcmp': different types for formal and actual parameter 1
+C:\Users\jules\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(89,23): warning C4047:  'function': 'const char *' differs in levels of indirection from 'char *[100]'
+C:\Users\jules\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(89,23): warning C4024:  'strcmp': different types for formal and actual parameter 1
+  PIAP1.vcxproj -> C:\Users\jules\Documents\GitHub\PJ_IAP1\ProjetIAP1\x64\Debug\PIAP1.exe
