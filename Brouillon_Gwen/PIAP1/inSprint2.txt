@@ -1,0 +1,4 @@
+﻿definir_nombre_épreuves
+definir_nombre_épreuves 2
+definir_nombre_épreuves 10
+definir_nombre_épreuves 7

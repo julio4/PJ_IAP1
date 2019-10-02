@@ -1,4 +1,0 @@
-﻿  main.c
-C:\Users\jules\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(57,10): warning C4477:  'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'int'
-C:\Users\jules\Documents\GitHub\PJ_IAP1\ProjetIAP1\PIAP1\main.c(57,10): warning C4313:  'printf': '%s' in format string conflicts with argument 1 of type 'int'
-  PIAP1.vcxproj -> C:\Users\jules\Documents\GitHub\PJ_IAP1\ProjetIAP1\x64\Debug\PIAP1.exe
