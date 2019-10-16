@@ -1,2 +1,0 @@
-definir_parcours 121
-exit
