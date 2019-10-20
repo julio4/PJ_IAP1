@@ -1,2 +1,6 @@
-﻿  LINK : E:\Patinage_V5\Debug\Patinage_V3.exe introuvable ou non généré par la dernière édition de liens incrémentielle ; édition de liens complète en cours
-  Patinage_V3.vcxproj -> E:\Patinage_V5\Debug\Patinage_V3.exe
+﻿  Source.c
+C:\Users\famille\Documents\GitHub\PJ_IAP1\Patinage_V7\Patinage_V3\Source.c(102,30): warning C4047: 'fonction' : les niveaux d'indirection de 'const Course *' et de 'Course (*)[16]' sont différents
+C:\Users\famille\Documents\GitHub\PJ_IAP1\Patinage_V7\Patinage_V3\Source.c(102,30): warning C4024: 'afficher_temps' : types différents pour le paramètre formel et réel 1
+C:\Users\famille\Documents\GitHub\PJ_IAP1\Patinage_V7\Patinage_V3\Source.c(187,37): warning C4028: paramètre formel 1 différent de la déclaration
+C:\Users\famille\Documents\GitHub\PJ_IAP1\Patinage_V7\Patinage_V3\Source.c(193,20): warning C4018: '<' : incompatibilité signed/unsigned
+  Patinage_V3.vcxproj -> C:\Users\famille\Documents\GitHub\PJ_IAP1\Patinage_V7\Debug\Patinage_V3.exe

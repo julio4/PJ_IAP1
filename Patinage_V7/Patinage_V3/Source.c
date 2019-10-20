@@ -25,30 +25,34 @@ typedef struct {
 	char pays[MAX_MOT + 1];
 	Patineur dataPatineurs[MAX_EQUIPIERS];
 	int numEq;
+	int dernierPatineur;
 }Equipe;
 
 
 typedef struct {
 	Equipe equipe[MAX_EQUIPES];
+	unsigned int fini;
 }Course;
 
 
 typedef struct {
 	unsigned int nbInscrits;
 	Course course[MAX_EPREUVES];
+	unsigned int nbParcours;
 }Inscrits;
 
 
 /*PROTOTYPES FONCTIONS*/
 
 
-void definir_parcours(int* parcours);
+void definir_parcours(Inscrits* ins);
 void definir_nombre_epreuves(int* epreuves);
 void inscrire_equipe(Inscrits* ins);
 void afficher_equipes(const Inscrits* ins);
-void enregistrer_temps(Course* course);
+void enregistrer_temps(Inscrits* ins);
 void afficher_temps(const Course* course);
 void afficher_temps_equipes(Inscrits* ins);
+void detection_fin_poursuite(Inscrits* ins);
 
 
 /*EXECUTION*/
@@ -59,9 +63,8 @@ int main() {
 	/*INITIALISATION VARIABLES ET STRUCTURES*/
 
 	char mot[MAX_MOT + 1];
-	int parcours = 0;
 	int epreuves = 0;
-	Inscrits ins = { .nbInscrits = 0 };
+	Inscrits ins = { .nbInscrits = 0, .nbParcours = 0 };
 
 
 	/*PROGRAMME*/
@@ -78,7 +81,7 @@ int main() {
 		//Alors lancer fonction()
 
 		if (strcmp(mot, "definir_parcours") == 0) {
-			definir_parcours(&parcours);
+			definir_parcours(&ins);
 		}
 
 		else if (strcmp(mot, "definir_nombre_epreuves") == 0) {
@@ -93,13 +96,7 @@ int main() {
 			afficher_equipes(&ins);
 		}
 		else if (strcmp(mot, "enregistrer_temps") == 0) {
-			enregistrer_temps(&ins.course);
-		}
-		else if (strcmp(mot, "detection_fin_poursuite") == 0) {
-
-		}
-		else if (strcmp(mot, "detection_fin_competition") == 0) {
-
+			enregistrer_temps(&ins);
 		}
 		else if (strcmp(mot, "afficher_temps") == 0) {
 			afficher_temps(&ins.course);
@@ -111,6 +108,7 @@ int main() {
 		else if (strcmp(mot, "exit") == 0) {
 			exit(0); //Permet de sortir de la boucle infini et finir le programme
 		}
+
 		printf("\n");
 	}
 }
@@ -120,8 +118,8 @@ int main() {
 
 
 //Attribue à parcours la valeur entrée après la fonction definir_parcours
-void definir_parcours(int* parcours) {
-	scanf("%d", parcours);
+void definir_parcours(Inscrits* ins) {
+	scanf("%d", &ins->nbParcours);
 }
 
 //Attribue à épreuves la valeur entrée après la fonction definir_nombre_epreuves
@@ -170,7 +168,7 @@ void afficher_equipes(const Inscrits* ins) {
 }
 
 
-void enregistrer_temps(Course* course) {
+void enregistrer_temps(Inscrits* ins) {
 	//dossard
 	int dossard;
 	scanf("%d", &dossard);
@@ -178,11 +176,13 @@ void enregistrer_temps(Course* course) {
 	int numero_joueur = ((dossard - 101) % 3);
 
 	//tour
-	scanf("%d", &course->equipe[numero_equipe].dataPatineurs[numero_joueur].tour);
+	scanf("%d", &ins->course->equipe[numero_equipe].dataPatineurs[numero_joueur].tour);
 
 	//temps
-	scanf("%lf", &course->equipe[numero_equipe].dataPatineurs[numero_joueur].temps[(course->equipe[numero_equipe].dataPatineurs[numero_joueur].tour) - 1]);
-} 
+	scanf("%lf", &ins->course->equipe[numero_equipe].dataPatineurs[numero_joueur].temps[(ins->course->equipe[numero_equipe].dataPatineurs[numero_joueur].tour) - 1]);
+
+	detection_fin_poursuite(ins);
+}
 
 void afficher_temps(Course* course) {
 	int dossard;
@@ -192,7 +192,7 @@ void afficher_temps(Course* course) {
 
 	for (int i = 0; i < (course->equipe[numero_equipe].dataPatineurs[numero_joueur].tour); ++i) {
 		printf("%s ", course->equipe[numero_equipe].pays);
-		printf("%d ", (i+1));
+		printf("%d ", (i + 1));
 		printf("%s ", course->equipe[numero_equipe].dataPatineurs[numero_joueur].nom);
 		printf("%.1f", course->equipe[numero_equipe].dataPatineurs[numero_joueur].temps[i]);
 	}
@@ -201,32 +201,76 @@ void afficher_temps(Course* course) {
 void afficher_temps_equipes(Inscrits* ins) {
 
 	int tour;
-	scanf("%d", &tour);
+	(ins->course->fini) ? (tour = ins->nbParcours) : (scanf("%d", &tour));
 	--tour; // décrémente tour pour la position dans le tableau temps
 
 	int nb_eq_inscrites = (ins->nbInscrits) / MAX_EQUIPIERS;
 
 	for (int i = 0; i < nb_eq_inscrites; ++i) {
-		double a = ins->course->equipe[i].dataPatineurs[0].temps[tour]; //initialise a, b, et c pour éviter les longues lignes de structures dans les conditions
-		double b = ins->course->equipe[i].dataPatineurs[1].temps[tour]; //--> Mais prend de la place dans la mémoire donc peut etre a supprimer
-		double c = ins->course->equipe[i].dataPatineurs[2].temps[tour]; //Donc a voir si rentable ou pas
-		if (a > 0.0 && b > 0.0 && c > 0.0) {
+		if (ins->course->equipe[i].dataPatineurs[0].temps[tour] > 0.0 && ins->course->equipe[i].dataPatineurs[1].temps[tour] > 0.0 &&
+			ins->course->equipe[i].dataPatineurs[2].temps[tour] > 0.0) {
 			printf("%s ", ins->course->equipe[i].pays);
-			if (a < b || a < c) {
-				if (b < c) {
-					printf("%.1f", c);
+			if (ins->course->equipe[i].dataPatineurs[0].temps[tour] < ins->course->equipe[i].dataPatineurs[1].temps[tour] ||
+				ins->course->equipe[i].dataPatineurs[0].temps[tour] < ins->course->equipe[i].dataPatineurs[2].temps[tour]) {
+				if (ins->course->equipe[i].dataPatineurs[1].temps[tour] < ins->course->equipe[i].dataPatineurs[2].temps[tour]) {
+					printf("%.1f", ins->course->equipe[i].dataPatineurs[2].temps[tour]);
+
 				}
 				else {
-					printf_s("%.1f", b);
+					printf("%.1f", ins->course->equipe[i].dataPatineurs[1].temps[tour]);
 				}
 			}
 			else {
-				printf_s("%.1f", a);
+				printf("%.1f", ins->course->equipe[i].dataPatineurs[0].temps[tour]);
 			}
 		}
 		else {
 			printf("indisponible\n");
 		}
 		printf("\n");
+	}
+}
+
+void detection_fin_poursuite(Inscrits* ins) {
+	int nb_eq_inscrites = (ins->nbInscrits) / MAX_EQUIPIERS;
+	int fini = 1;
+	for (int i = 0; (i < nb_eq_inscrites && fini); ++i) {
+		for (int j = 0; j < MAX_EQUIPIERS; ++j) {
+			if ((ins->course->equipe[i].dataPatineurs[j].temps[(ins->nbParcours) - 1]) < 0.1) {
+				fini = 0;
+				break;
+			}
+			else {
+				continue;
+			}
+		}
+	}
+	if (fini) {
+		printf("detection_fin_poursuite\n");
+		ins->course->fini = 1;
+		int tour = ins->nbParcours - 1;
+		for (int i = 0; i < nb_eq_inscrites; ++i) {
+			if (ins->course->equipe[i].dataPatineurs[0].temps[tour] < ins->course->equipe[i].dataPatineurs[1].temps[tour] ||
+				ins->course->equipe[i].dataPatineurs[0].temps[tour] < ins->course->equipe[i].dataPatineurs[2].temps[tour]) {
+				if (ins->course->equipe[i].dataPatineurs[1].temps[tour] < ins->course->equipe[i].dataPatineurs[2].temps[tour]) {
+					ins->course->equipe[i].dernierPatineur = 2;
+				}
+				else {
+					ins->course->equipe[i].dernierPatineur = 1;
+				}
+			}
+			else {
+				ins->course->equipe[i].dernierPatineur = 0;
+			}
+		}
+		if (ins->course->equipe[0].dataPatineurs[ins->course->equipe[0].dernierPatineur].temps[tour] > ins->course->equipe[0].dataPatineurs[ins->course->equipe[0].dernierPatineur].temps[tour]) {
+			printf("%s %.1f\n", ins->course->equipe[0].pays, ins->course->equipe[0].dataPatineurs[ins->course->equipe[0].dernierPatineur].temps[tour]);
+			printf("%s %.1f\n", ins->course->equipe[1].pays, ins->course->equipe[1].dataPatineurs[ins->course->equipe[1].dernierPatineur].temps[tour]);
+		}
+		else {
+			printf("%s %.1f\n", ins->course->equipe[1].pays, ins->course->equipe[1].dataPatineurs[ins->course->equipe[1].dernierPatineur].temps[tour]);
+			printf("%s %.1f\n", ins->course->equipe[0].pays, ins->course->equipe[0].dataPatineurs[ins->course->equipe[0].dernierPatineur].temps[tour]);
+		}
+
 	}
 }
