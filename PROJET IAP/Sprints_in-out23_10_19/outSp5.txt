@@ -1,0 +1,23 @@
+inscription dossard 101
+inscription dossard 102
+inscription dossard 103
+inscription dossard 104
+inscription dossard 105
+inscription dossard 106
+inscription dossard 107
+inscription dossard 108
+inscription dossard 109
+inscription dossard 110
+inscription dossard 111
+inscription dossard 112
+detection_fin_poursuite
+Japon 102.3
+Canada 103.1
+detection_fin_poursuite
+France 102.1
+Italie 102.6
+detection_fin_competition
+France 102.1
+Japon 102.3
+Italie 102.6
+Canada 103.1
