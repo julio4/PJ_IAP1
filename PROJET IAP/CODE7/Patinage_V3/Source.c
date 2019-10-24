@@ -7,7 +7,7 @@
 
 /* INITIALISATION CONSTANTES GLOBALES ET STRUCTURES*/
 
-enum MAX { MAX_TOURS = 10, MAX_EPREUVES = 16, MAX_EQUIPES_PARCOURS = 2, MAX_EQUIPIERS = 3, MAX_MOT = 30 }; //Constantes globales
+enum MAX { MAX_TOURS = 10, MAX_EPREUVES = 16, MAX_EQUIPES = 32, MAX_EQUIPES_PARCOURS = 2, MAX_EQUIPIERS = 3, MAX_MOT = 30 }; //Constantes globales
 enum INIT { PREMIER_DOSSARD = 101};
 
 //Structure Patineur: Nom du patineur + numéro de dossard
@@ -22,13 +22,13 @@ typedef struct {
 typedef struct {
 	char pays[MAX_MOT + 1];
 	Patineur dataPatineurs[MAX_EQUIPIERS];
-	int numEq;
-	int dernierPatineur;
+	unsigned int dernierPatineur;
 }Equipe;
 
 typedef struct {
 	Equipe equipe[MAX_EQUIPES_PARCOURS];
 	unsigned int fini;
+	unsigned int equipe_gagnante;
 }Course;
 
 typedef struct {
@@ -134,7 +134,7 @@ void inscrire_equipe(Inscrits* ins) {
 
 }
 
-void afficher_equipes(const Inscrits* ins) {
+void afficher_equipes(Inscrits* ins) {
 	int no_crs = crs_en_cour(ins);
 	//printf("\n[no_crs]%d\n", no_crs);
 
@@ -184,7 +184,7 @@ void afficher_temps(Inscrits* ins) {
 	int numero_equipe = ((dossard - 101) / 3) % 2;
 	//printf("\n[numero_equipe]%d\n", numero_equipe);
 
-	for (int i = 0; i < (ins->course[no_crs].equipe[numero_equipe].dataPatineurs[numero_joueur].tour); ++i) {
+	for (unsigned int i = 0; i < (ins->course[no_crs].equipe[numero_equipe].dataPatineurs[numero_joueur].tour); ++i) {
 		printf("%s ", ins->course[no_crs].equipe[numero_equipe].pays);
 		printf("%d ", (i + 1));
 		printf("%s ", ins->course[no_crs].equipe[numero_equipe].dataPatineurs[numero_joueur].nom);
@@ -261,10 +261,12 @@ void detection_fin_poursuite(Inscrits* ins) {
 		}
 
 		if (dernier_temps[1] > dernier_temps[0]) {
+			ins->course[no_crs].equipe_gagnante = 0;
 			printf("%s %.1f\n", ins->course[no_crs].equipe[0].pays, ins->course[no_crs].equipe[0].dataPatineurs[ins->course[no_crs].equipe[0].dernierPatineur].temps[tour]);
-			printf("%s %.1f\n", ins->course[no_crs].equipe[1].pays, ins->course[no_crs].equipe[1].dataPatineurs[ins->course[no_crs].equipe[1].dernierPatineur].temps[tour]);
+			printf("%s %.1f\n", ins->course[no_crs].equipe[1].pays, ins->course[no_crs].equipe[1].dataPatineurs[ins->course[no_crs].equipe[1].dernierPatineur].temps[tour]);		
 		}
 		else {
+			ins->course[no_crs].equipe_gagnante = 1;
 			printf("%s %.1f\n", ins->course[no_crs].equipe[1].pays, ins->course[no_crs].equipe[1].dataPatineurs[ins->course[no_crs].equipe[1].dernierPatineur].temps[tour]);
 			printf("%s %.1f\n", ins->course[no_crs].equipe[0].pays, ins->course[no_crs].equipe[0].dataPatineurs[ins->course[no_crs].equipe[0].dernierPatineur].temps[tour]);
 		}
@@ -274,13 +276,36 @@ void detection_fin_poursuite(Inscrits* ins) {
 void detection_fin_competition(Inscrits* ins) {
 	if (ins->course[ins->nbEpreuves - 1].fini == 1) {
 		printf("detection_fin_competition\n");
+		double temps[MAX_EQUIPES];
+		int equipes[MAX_EQUIPES];
+		for (unsigned int i = 0; i < (nb_eq_ins(ins) - 1); i = i + 2) {
+			for (int j = 0; j < MAX_EQUIPES_PARCOURS; ++j) {
+				temps[i + j] = ins->course[i].equipe[j].dataPatineurs[ins->course[i].equipe[j].dernierPatineur].temps[ins->nbParcours - 1];
+				printf("temps[%d] = %.1f\n", i + j, temps[i]);
+				equipes[i + j] = i + j;
+			}
+		}
 
+		for (int i = 0; i < (nb_eq_ins(ins) - 1); i++) {
+			for (int j = 0; j < (nb_eq_ins(ins) - 1); j++) {
+				if (temps[i] < temps[j]) {
+					int temporaire = temps[i];
+					temps[i] = temps[j];
+					equipes[i] = equipes[j];
+					temps[j] = temporaire;
+				}
+			}
+		}
+
+		for (int i = 0; i < (nb_eq_ins(ins) - 1); i++) {
+			printf("%s %.1f\n", ins->course[equipes[i]].equipe[ins->course[equipes[i]].equipe_gagnante].pays, temps[i]);
+		}
 	}
 }
 
 int crs_en_cour(Inscrits* ins) {
 	//printf("\n[crs_en_cour]\n");
-	for (int i = 0; i <= ins->nbEpreuves; ++i) {
+	for (unsigned int i = 0; i <= ins->nbEpreuves; ++i) {
 		//printf("\n[course[i].fini]%d", ins->course[i].fini);
 		if (ins->course[i].fini == 1) {
 			continue;

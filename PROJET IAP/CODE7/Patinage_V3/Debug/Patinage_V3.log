@@ -1,8 +1,4 @@
 ﻿  Source.c
-E:\PROJET IAP\CODE7\Patinage_V3\Source.c(137,44): warning C4028:  paramètre formel 1 différent de la déclaration
-E:\PROJET IAP\CODE7\Patinage_V3\Source.c(138,30): warning C4090:  'fonction' : qualificateurs 'const' différents
-E:\PROJET IAP\CODE7\Patinage_V3\Source.c(146,27): warning C4090:  'fonction' : qualificateurs 'const' différents
-E:\PROJET IAP\CODE7\Patinage_V3\Source.c(187,20): warning C4018:  '<' : incompatibilité signed/unsigned
-E:\PROJET IAP\CODE7\Patinage_V3\Source.c(282,20): warning C4018:  '<=' : incompatibilité signed/unsigned
-  LINK : E:\PROJET IAP\CODE7\Debug\Patinage_V3.exe introuvable ou non généré par la dernière édition de liens incrémentielle ; édition de liens complète en cours
-  Patinage_V3.vcxproj -> E:\PROJET IAP\CODE7\Debug\Patinage_V3.exe
+C:\Users\Julio\Documents\GitHub\PJ_IAP1\PROJET IAP\CODE7\Patinage_V3\Source.c(281,30): warning C4018:  '<' : incompatibilité signed/unsigned
+C:\Users\Julio\Documents\GitHub\PJ_IAP1\PROJET IAP\CODE7\Patinage_V3\Source.c(292,1): warning C4244:  'initialisation' : conversion de 'double' en 'int', perte possible de données
+  Patinage_V3.vcxproj -> C:\Users\Julio\Documents\GitHub\PJ_IAP1\PROJET IAP\CODE7\Debug\Patinage_V3.exe
