@@ -105,26 +105,19 @@ int main() {
 
 void definir_parcours(Inscrits* ins) {
 	scanf("%d", &ins->nbParcours);
-	//printf("\n[nbParcours]%d\n", ins->nbParcours);
 }
 
 void definir_nombre_epreuves(Inscrits* ins) {
 	scanf("%d", &ins->nbEpreuves);
-	//printf("\n[nbEpreuves]%d\n", ins->nbEpreuves);
 }
 
 void inscrire_equipe(Inscrits* ins) {
 	int no_crs = ins->derniere_course;
-	//printf("\n[derniere_course]%d\n", ins->derniere_course);
-
 	int no_eq = (nb_eq_ins(ins) - (ins->derniere_course * 2));
-	//printf("\n[no_eq]%d\n", no_eq);
-
 	static int dernier_dossard = PREMIER_DOSSARD - 1;
 	scanf("%s", ins->course[no_crs].equipe[no_eq].pays);
 
 	for (int i = 0; i < MAX_EQUIPIERS; ++i) {
-
 		scanf("%s", ins->course[no_crs].equipe[no_eq].dataPatineurs[i].nom);
 		dernier_dossard++;
 		ins->course[no_crs].equipe[no_eq].dataPatineurs[i].dossard = dernier_dossard;
@@ -133,15 +126,12 @@ void inscrire_equipe(Inscrits* ins) {
 	}
 
 	if ((no_eq % 2) == 1 && (ins->derniere_course + 1) != ins->nbEpreuves) {
-		//printf("\n[derniere_course]++\n");
 		ins->derniere_course++;
 	}
-
 }
 
 void afficher_equipes(Inscrits* ins) {
 	int no_crs = crs_en_cour(ins);
-	//printf("\n[no_crs]%d\n", no_crs);
 
 	for (int i = 0; i < MAX_EQUIPES_PARCOURS; ++i) {
 		printf("%s ", ins->course[no_crs].equipe[i].pays);
@@ -161,8 +151,7 @@ void enregistrer_temps(Inscrits* ins) {
 	//dossard
 	int dossard;
 	scanf("%d", &dossard);
-	//int numero_equipe = (dossard - 101) / 3;
-	//int numero_joueur = ((dossard - 101) % 3);
+
 	int numero_joueur = ((dossard - 101) % 3);
 	int numero_equipe = ((dossard - 101) / 3) % 2;
 	int no_crs = ((dossard - 101) / 3) / 2;
@@ -180,14 +169,10 @@ void enregistrer_temps(Inscrits* ins) {
 void afficher_temps(Inscrits* ins) {
 	int dossard;
 	scanf("%d", &dossard);
-	//int numero_equipe = ((dossard - 101) / 3 );
 
 	int numero_joueur = ((dossard - 101) % 3);
-	//printf("\n[numero_joueur]%d\n", numero_joueur);
 	int no_crs = ((dossard - 101) / 3) / 2;
-	//printf("\n[no_crs]%d\n", no_crs);
 	int numero_equipe = ((dossard - 101) / 3) % 2;
-	//printf("\n[numero_equipe]%d\n", numero_equipe);
 
 	for (unsigned int i = 0; i < (ins->course[no_crs].equipe[numero_equipe].dataPatineurs[numero_joueur].tour); ++i) {
 		printf("%s ", ins->course[no_crs].equipe[numero_equipe].pays);
@@ -201,11 +186,9 @@ void afficher_temps_equipes(Inscrits* ins) {
 	int no_crs = crs_en_cour(ins);
 	int tour;
 	scanf("%d", &tour);
-	//(ins->course->fini) ? (tour = ins->nbParcours) : (scanf("%d", &tour));
-	--tour; // décrémente tour pour la position dans le tableau temps
+	--tour;
 
 	for (int i = 0; i < MAX_EQUIPES_PARCOURS; ++i) {
-		//test enregistrement
 		int enregistrement = 1;
 		for (int j = 0; j < MAX_EQUIPIERS; ++j) {
 			if (ins->course->equipe[i].dataPatineurs[j].temps[tour] <= 0.001) {
@@ -213,10 +196,8 @@ void afficher_temps_equipes(Inscrits* ins) {
 				break;
 			}
 		}
-
 		if (enregistrement) {
 			printf("%s ", ins->course[no_crs].equipe[i].pays);
-
 			double dernier_temps = ins->course[no_crs].equipe[i].dataPatineurs[0].temps[tour];
 			for (int j = 1; j < MAX_EQUIPIERS; ++j) {
 				if (ins->course[no_crs].equipe[i].dataPatineurs[j].temps[tour] > dernier_temps) {
@@ -234,7 +215,6 @@ void afficher_temps_equipes(Inscrits* ins) {
 
 void detection_fin_poursuite(Inscrits* ins) {
 	int no_crs = crs_en_cour(ins);
-	//printf("\n[no_crs]%d\n", no_crs);
 	int fini = 1;
 	for (int i = 0; ( (i < MAX_EQUIPES_PARCOURS) && fini); ++i) {
 		for (int j = 0; j < MAX_EQUIPIERS; ++j) {
@@ -250,7 +230,6 @@ void detection_fin_poursuite(Inscrits* ins) {
 	if (fini) {
 		printf("detection_fin_poursuite\n");
 		ins->course[no_crs].fini = 1;
-		//printf("\n[ins->course[%d].fini = 1]\n", no_crs);
 		int tour = ins->nbParcours - 1;
 
 		double dernier_temps[MAX_EQUIPES_PARCOURS];
@@ -264,7 +243,6 @@ void detection_fin_poursuite(Inscrits* ins) {
 				}
 			}
 		}
-
 		if (dernier_temps[1] > dernier_temps[0]) {
 			ins->course[no_crs].equipe_gagnante = 0;
 			printf("%s %.1f\n", ins->course[no_crs].equipe[0].pays, ins->course[no_crs].equipe[0].dataPatineurs[ins->course[no_crs].equipe[0].dernierPatineur].temps[tour]);
@@ -282,21 +260,14 @@ void detection_fin_competition(Inscrits* ins) {
 	if (ins->course[ins->nbEpreuves - 1].fini == 1) {
 		printf("detection_fin_competition\n");
 		Tri tri[MAX_EQUIPES];
-		//double temps[MAX_EQUIPES];
-		//int equipes[MAX_EQUIPES];
 		int c = 0;
 		for (int i = 0; i < ((nb_eq_ins(ins) / 2)); i++) {
 			for (int j = 0; j < MAX_EQUIPES_PARCOURS; j++) {
 				tri[c].temp = ins->course[i].equipe[j].dataPatineurs[ins->course[i].equipe[j].dernierPatineur].temps[ins->nbParcours - 1];
-				//printf("[temps %d]%.1f\n", c, temps[c]);
 				tri[c].equipe = c;
 				c++;
 			}
 		}
-
-	//	for (int i = 0; i < 15; i++) {
-	//		printf("\n:::equipe %d > %d ::: temps %d > %.1f", i, tri[i].equipe, i, tri[i].temp);
-	//	}
 		
 		for (int i = 0; i < (nb_eq_ins(ins)); i++) {
 			for (int j = 0; j < (nb_eq_ins(ins)); j++) {
@@ -311,34 +282,23 @@ void detection_fin_competition(Inscrits* ins) {
 			}
 		}
 		
-
-		//for (int i = 0; i < 15; i++) {
-			//printf("\n:::equipe %d > %d ::: temps %d > %.1f", i, tri[i].equipe, i, tri[i].temp);
-		//}
-
 		for (int i = 0; i < (nb_eq_ins(ins)); i++) {
-			//printf("\nins->course[%d].equipe[%d].pays", (tri[i].equipe / 2), (tri[i].equipe) % 2);
 			printf("%s %.1f\n", ins->course[(tri[i].equipe / 2)].equipe[(tri[i].equipe) % 2].pays, tri[i].temp);
 		}
-
-		//printf("\n\nTEST\n\n %s", ins->course[4].equipe[1].pays);
 	}
 }
 
 int crs_en_cour(Inscrits* ins) {
-	//printf("\n[crs_en_cour]\n");
 	for (unsigned int i = 0; i <= ins->nbEpreuves; ++i) {
-		//printf("\n[course[i].fini]%d", ins->course[i].fini);
 		if (ins->course[i].fini == 1) {
 			continue;
 		}
 		else {
-			//printf("\n[i]%d", i);
 			return i;
 			break;
 		}
 	}
-	return (ins->nbEpreuves - 1); // FIN COMPETITION
+	return (ins->nbEpreuves - 1);
 }
 
 int nb_eq_ins(Inscrits* ins) {
