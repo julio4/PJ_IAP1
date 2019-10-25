@@ -75,34 +75,19 @@ detection_fin_poursuite
 Allemagne 454.3
 USA 455.9
 detection_fin_competition
-temps[0] = 450.3
-temps[1] = 450.3
-temps[2] = 459.8
-temps[3] = 459.8
-temps[4] = 435.4
-temps[5] = 435.4
-temps[6] = 444.3
-temps[7] = 444.3
-temps[8] = 0.0
-temps[9] = 0.0
-temps[10] = 0.0
-temps[11] = 0.0
-temps[12] = 0.0
-temps[13] = 0.0
-temps[14] = 0.0
-temps[15] = 0.0
-Hollande 0.0
-Hollande 0.0
-Hollande 0.0
-Hollande 0.0
-Hollande 0.0
-Hollande 0.0
-Hollande 0.0
-Hollande 435.0
-Hollande 439.0
-Hollande 442.0
-Hollande 444.0
-Hollande 450.0
-Hollande 450.0
-Hollande 455.0
-Hollande 459.8
+Australie 435.4
+Chine 439.9
+Russie 442.0
+Finlande 444.3
+Canada 447.8
+France 448.7
+Hongrie 450.1
+Japon 450.3
+Autriche 450.5
+Pologne 453.6
+Allemagne 454.3
+Hollande 455.7
+USA 455.9
+Norvege 456.7
+Italie 458.3
+Coree 459.8

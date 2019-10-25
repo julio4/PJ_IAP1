@@ -10,6 +10,11 @@
 enum MAX { MAX_TOURS = 10, MAX_EPREUVES = 16, MAX_EQUIPES = 32, MAX_EQUIPES_PARCOURS = 2, MAX_EQUIPIERS = 3, MAX_MOT = 30 }; //Constantes globales
 enum INIT { PREMIER_DOSSARD = 101};
 
+typedef struct {
+	double temp;
+	int equipe;
+}Tri;
+
 //Structure Patineur: Nom du patineur + numéro de dossard
 typedef struct {
 	char nom[MAX_MOT + 1];
@@ -28,7 +33,7 @@ typedef struct {
 typedef struct {
 	Equipe equipe[MAX_EQUIPES_PARCOURS];
 	unsigned int fini;
-	unsigned int equipe_gagnante;
+	unsigned int equipe_gagnante; // // // //
 }Course;
 
 typedef struct {
@@ -276,30 +281,47 @@ void detection_fin_poursuite(Inscrits* ins) {
 void detection_fin_competition(Inscrits* ins) {
 	if (ins->course[ins->nbEpreuves - 1].fini == 1) {
 		printf("detection_fin_competition\n");
-		double temps[MAX_EQUIPES];
-		int equipes[MAX_EQUIPES];
-		for (unsigned int i = 0; i < (nb_eq_ins(ins) - 1); i = i + 2) {
-			for (int j = 0; j < MAX_EQUIPES_PARCOURS; ++j) {
-				temps[i + j] = ins->course[i].equipe[j].dataPatineurs[ins->course[i].equipe[j].dernierPatineur].temps[ins->nbParcours - 1];
-				printf("temps[%d] = %.1f\n", i + j, temps[i]);
-				equipes[i + j] = i + j;
+		Tri tri[MAX_EQUIPES];
+		//double temps[MAX_EQUIPES];
+		//int equipes[MAX_EQUIPES];
+		int c = 0;
+		for (int i = 0; i < ((nb_eq_ins(ins) / 2)); i++) {
+			for (int j = 0; j < MAX_EQUIPES_PARCOURS; j++) {
+				tri[c].temp = ins->course[i].equipe[j].dataPatineurs[ins->course[i].equipe[j].dernierPatineur].temps[ins->nbParcours - 1];
+				//printf("[temps %d]%.1f\n", c, temps[c]);
+				tri[c].equipe = c;
+				c++;
 			}
 		}
 
-		for (int i = 0; i < (nb_eq_ins(ins) - 1); i++) {
-			for (int j = 0; j < (nb_eq_ins(ins) - 1); j++) {
-				if (temps[i] < temps[j]) {
-					int temporaire = temps[i];
-					temps[i] = temps[j];
-					equipes[i] = equipes[j];
-					temps[j] = temporaire;
+	//	for (int i = 0; i < 15; i++) {
+	//		printf("\n:::equipe %d > %d ::: temps %d > %.1f", i, tri[i].equipe, i, tri[i].temp);
+	//	}
+		
+		for (int i = 0; i < (nb_eq_ins(ins)); i++) {
+			for (int j = 0; j < (nb_eq_ins(ins)); j++) {
+				if (tri[i].temp < tri[j].temp) {
+					double temporaire = tri[i].temp;
+					int temporaire_2 = tri[i].equipe;
+					tri[i].temp = tri[j].temp;
+					tri[i].equipe = tri[j].equipe;
+					tri[j].temp = temporaire;
+					tri[j].equipe = temporaire_2;
 				}
 			}
 		}
+		
 
-		for (int i = 0; i < (nb_eq_ins(ins) - 1); i++) {
-			printf("%s %.1f\n", ins->course[equipes[i]].equipe[ins->course[equipes[i]].equipe_gagnante].pays, temps[i]);
+		//for (int i = 0; i < 15; i++) {
+			//printf("\n:::equipe %d > %d ::: temps %d > %.1f", i, tri[i].equipe, i, tri[i].temp);
+		//}
+
+		for (int i = 0; i < (nb_eq_ins(ins)); i++) {
+			//printf("\nins->course[%d].equipe[%d].pays", (tri[i].equipe / 2), (tri[i].equipe) % 2);
+			printf("%s %.1f\n", ins->course[(tri[i].equipe / 2)].equipe[(tri[i].equipe) % 2].pays, tri[i].temp);
 		}
+
+		//printf("\n\nTEST\n\n %s", ins->course[4].equipe[1].pays);
 	}
 }
 
