@@ -1,0 +1,6 @@
+﻿  Source.c
+E:\Cours\IAP\P_IAP_1\Sprints\Sprint_2\Sprint_2\Source.c(89,33): warning C4047:  'fonction' : les niveaux d'indirection de 'Course *' et de 'Course (*)[16]' sont différents
+E:\Cours\IAP\P_IAP_1\Sprints\Sprint_2\Sprint_2\Source.c(89,33): warning C4024:  'enregistrer_temps' : types différents pour le paramètre formel et réel 1
+E:\Cours\IAP\P_IAP_1\Sprints\Sprint_2\Sprint_2\Source.c(93,30): warning C4047:  'fonction' : les niveaux d'indirection de 'const Course *' et de 'Course (*)[16]' sont différents
+E:\Cours\IAP\P_IAP_1\Sprints\Sprint_2\Sprint_2\Source.c(93,30): warning C4024:  'afficher_temps' : types différents pour le paramètre formel et réel 1
+  Sprint_2.vcxproj -> E:\Cours\IAP\P_IAP_1\Sprints\Sprint_2\Debug\Sprint_2.exe
