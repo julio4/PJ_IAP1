@@ -1,0 +1,5 @@
+Vous trouverez dans ce dossier le source de notre programme (Sprint 5), ainsi que notre dossier au format PDF (en cas de problèmes avec le dossier papier).
+
+En cas de problème, vous pouvez nous contacter via nos adresses mails :
+
+gwenole.martin@etu.parisdescartes.fr et jules.doumeche@etu.parisdescartes.fr
