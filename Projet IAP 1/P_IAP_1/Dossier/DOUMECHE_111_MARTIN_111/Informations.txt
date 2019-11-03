@@ -2,4 +2,4 @@ Vous trouverez dans ce dossier le source de notre programme (Sprint 5), ainsi qu
 
 En cas de problème, vous pouvez nous contacter via nos adresses mails :
 
-gwenole.martin@etu.parisdescartes.fr et jules.doumeche@etu.parisdescartes.fr
+gwenole.martin@etu.parisdescartes.fr et il03673@etu.parisdescartes.fr
