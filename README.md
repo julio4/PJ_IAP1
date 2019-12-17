@@ -1,7 +1,7 @@
 # PJ_IAP1
 
-Jules DOUMECHE
-Gwenole MARTIN
+[@LightBowFire](https://github.com/LightBowFire)
+[@Julio4](https://github.com/julio4)
 
 ## Presentation
 
