@@ -1,10 +1,11 @@
 # PJ_IAP1
-PROJET IAP Poursuite par équipes  en patinage de vitesse 
 
-Jules DOUMECHE
-Gwenole MARTIN
+[@LightBowFire](https://github.com/LightBowFire)
+[@Julio4](https://github.com/julio4)
 
 ## Presentation
+
+PROJET IAP Poursuite par équipes en patinage de vitesse 
 
 ## Sprint
 
@@ -12,4 +13,4 @@ Gwenole MARTIN
 - [x] Sprint 2
 - [x] Sprint 3
 - [x] Sprint 4
-- [ ] Sprint 5
+- [x] Sprint 5
