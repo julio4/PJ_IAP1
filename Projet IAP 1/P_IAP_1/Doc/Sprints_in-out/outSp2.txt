@@ -1,9 +1,0 @@
-inscription dossard 101
-inscription dossard 102
-inscription dossard 103
-inscription dossard 104
-inscription dossard 105
-inscription dossard 106
-Canada 1 Weidemann 53.2
-Japon 1 Sato 53.7
-Japon 2 Sato 100.6
